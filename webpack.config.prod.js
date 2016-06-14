@@ -12,11 +12,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-  devServer: {
-    inline: true,
-    host: "0.0.0.0",
-    port: 8080
-  },  
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
