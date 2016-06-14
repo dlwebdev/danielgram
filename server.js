@@ -7,15 +7,15 @@ var app = express();
 var port = process.env.PORT || 8080;
 
 var indexPath = path.join(__dirname, './index.html');
-var publicPath = express.static(path.join(__dirname, './dist'));
+var distPath = express.static(path.join(__dirname, './dist'));
 
 app.set('view engine', 'html');
 
 app.engine('html', require('ejs').renderFile);
 //app.use(express.static(path.join(__dirname, 'index.html')));
 
-// make express look in the dist directory for assets (css/js/img)
-app.use(express.static(publicPath));
+// make express look in the client directory for assets (css/js/img)
+app.use('/dist', distPath);
 
 // set the home page route
 /*
@@ -26,9 +26,13 @@ app.get('/', function(req, res) {
 });
 */
 
-app.get('/', function(req, res) {
-  res.sendFile(indexPath);
+/*
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
+*/
+
+app.get('/', function (_, res) { res.sendFile(indexPath) })
 
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
