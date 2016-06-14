@@ -9,7 +9,10 @@ var port = process.env.PORT || 8080;
 app.set('view engine', 'html');
 
 app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname, 'index.html')));
+//app.use(express.static(path.join(__dirname, 'index.html')));
+
+// make express look in the client directory for assets (css/js/img)
+app.use(express.static(__dirname + '/client'));
 
 // set the home page route
 /*
