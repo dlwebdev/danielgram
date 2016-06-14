@@ -8,6 +8,7 @@ var port = process.env.PORT || 8080;
 
 app.set('view engine', 'html');
 
+app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, 'index.html')));
 
 // set the home page route
