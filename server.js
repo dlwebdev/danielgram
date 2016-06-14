@@ -26,16 +26,9 @@ app.get('/', function(req, res) {
 });
 */
 
-/*
 app.get('/*', function(req, res) {
   res.sendFile(indexPath);
 });
-*/
-
-app.route('/*')
-  .get(function(req, res) {
-    res.sendfile(indexPath);
-  });
 
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
